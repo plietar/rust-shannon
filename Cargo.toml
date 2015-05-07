@@ -1,0 +1,9 @@
+[package]
+name = "shannon"
+version = "0.1.0"
+authors = ["Paul Liétar <paul@lietar.net>"]
+
+[dependencies.shannon-sys]
+path = "shannon-sys"
+version = "0.1.0"
+
