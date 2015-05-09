@@ -7,3 +7,9 @@ authors = ["Paul Liétar <paul@lietar.net>"]
 path = "shannon-sys"
 version = "0.1.0"
 
+[dependencies]
+byteorder = "*"
+
+[dependencies.readall]
+git = "https://github.com/plietar/rust-readall.git"
+
