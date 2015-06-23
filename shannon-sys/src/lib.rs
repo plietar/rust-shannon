@@ -6,6 +6,7 @@
 extern crate libc;
 
 #[repr(C)]
+#[derive(Clone)]
 pub struct shn_ctx {
     R: [libc::uint32_t; 16],
     CRC: [libc::uint32_t; 16],

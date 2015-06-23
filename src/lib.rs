@@ -10,7 +10,9 @@ use libc::c_int;
 use byteorder::{BigEndian,ByteOrder};
 use readall::ReadAllExt;
 use std::io;
+use std::net::TcpStream;
 
+#[derive(Clone)]
 pub struct Shannon {
     ctx: shn_ctx
 }
@@ -151,6 +153,18 @@ impl <S : io::Read + io::Write> io::Write for ShannonStream<S> {
 
     fn flush(&mut self) -> io::Result<()> {
         self.stream.flush()
+    }
+}
+
+impl Clone for ShannonStream<TcpStream> {
+    fn clone(&self) -> Self {
+        ShannonStream {
+            stream: self.stream.try_clone().unwrap(),
+            send_nonce: self.send_nonce,
+            send_cipher: self.send_cipher.clone(),
+            recv_nonce: self.recv_nonce,
+            recv_cipher: self.recv_cipher.clone(),
+        }
     }
 }
 
