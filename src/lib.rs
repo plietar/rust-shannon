@@ -3,12 +3,10 @@
 extern crate shannon_sys as shn;
 extern crate libc;
 extern crate byteorder;
-extern crate readall;
 
 use shn::*;
 use libc::c_int;
 use byteorder::{BigEndian,ByteOrder};
-use readall::ReadAllExt;
 use std::io;
 use std::net::TcpStream;
 
@@ -118,7 +116,7 @@ impl <S : io::Read + io::Write> ShannonStream<S> {
 
     pub fn finish_recv(&mut self) -> io::Result<()> {
         let mut mac = [0; 4];
-        try!(self.stream.read_all(&mut mac));
+        try!(self.stream.read_exact(&mut mac));
 
         let mac2 = self.recv_cipher.finish(4);
 
