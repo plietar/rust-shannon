@@ -5,5 +5,8 @@ authors = ["Paul Liétar <paul@lietar.net>"]
 build = "build.rs"
 links = "shannon"
 
+[dependencies]
+libc = "^0.2"
+
 [build-dependencies]
 gcc = "0.3"

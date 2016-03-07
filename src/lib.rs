@@ -1,5 +1,3 @@
-#![feature(libc)]
-
 extern crate shannon_sys as shn;
 extern crate libc;
 extern crate byteorder;
