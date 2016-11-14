@@ -4,7 +4,7 @@ extern crate byteorder;
 
 use shn::*;
 use libc::c_int;
-use byteorder::{BigEndian,ByteOrder};
+use byteorder::{BigEndian, ByteOrder};
 use std::io;
 use std::net::TcpStream;
 
@@ -64,6 +64,21 @@ impl Shannon {
         }
 
         mac
+    }
+
+    pub fn nonce_u32(&mut self, n: u32) {
+        let mut nonce = [0u8; 4];
+        BigEndian::write_u32(&mut nonce, n);
+        self.nonce(&nonce);
+    }
+
+    pub fn check_mac(&mut self, expected: &[u8]) -> io::Result<()> {
+        let actual = self.finish(expected.len() as u32);
+        if actual != expected {
+            Err(io::Error::new(io::ErrorKind::Other, "MAC mismatch"))
+        } else {
+            Ok(())
+        }
     }
 }
 
@@ -163,4 +178,3 @@ impl Clone for ShannonStream<TcpStream> {
         }
     }
 }
-
