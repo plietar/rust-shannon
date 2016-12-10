@@ -1,10 +1,8 @@
 [package]
 name = "shannon"
-version = "0.1.1"
+version = "0.2.0"
 authors = ["Paul Liétar <paul@lietar.net>"]
+license = "MIT"
 
 [dependencies]
-byteorder   = "*"
-libc        = "^0.2"
-shannon-sys = { path = "shannon-sys" }
-
+byteorder = "0.5.3"
