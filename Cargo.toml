@@ -5,4 +5,4 @@ authors = ["Paul Liétar <paul@lietar.net>"]
 license = "MIT"
 
 [dependencies]
-byteorder = "0.5.3"
+byteorder = "1.0"
