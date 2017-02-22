@@ -3,6 +3,7 @@ name = "shannon"
 version = "0.2.0"
 authors = ["Paul Liétar <paul@lietar.net>"]
 license = "MIT"
+description = "Shannon cipher implementation"
 
 [dependencies]
 byteorder = "1.0"
